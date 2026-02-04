@@ -1,43 +1,72 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Login = () => {
-    const [email, setEmail] = useState("")
-    const[password, setPassword] = useState("")
-    const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
-    function handleLogin(){
-        if(email && password){
-            localStorage.setItem("isAuth", "true")
-            navigate("/dashboard")
-        }
-        console.log(email)
-        console.log(password)
+  function handleLogin(e) {
+    e.preventDefault()
+
+    if (!email || !password) {
+      alert("Please fill all fields")
+      return
     }
+
+    const storedUser = JSON.parse(localStorage.getItem("user"))
+
+    if (!storedUser) {
+      alert("No User Found , Register First")
+      return
+    }
+
+    if (storedUser.email === email && storedUser.password === password) {
+      localStorage.setItem("isAuth", "true")
+      alert("Login Successful")
+      navigate("/dashboard")
+    } else {
+      alert("Invalid Email or Password")
+    }
+  }
+
+
   return (
-    <div>
-      <input
-        placeholder='Enter Email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+    <div className="container w-50 mx-auto mt-5">
+      <h3>Login here</h3>
 
-      />
-       {/* <p>Current value: {email}</p> */}
+      <form onSubmit={handleLogin}>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-      <input 
-        type="text"
-        placeholder='Enter Password'
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button 
-        className='p-4 bg-danger'
-        onClick={handleLogin}
-      >
-        Login
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Login
         </button>
+
+        <Link to="/register" className="ms-3">
+          Not registered?
+        </Link>
+      </form>
     </div>
-  )
-}
+  );
+};
+
 
 export default Login
