@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import 'bootstrap/dist/css/bootstrap.css';
 import Products from './pages/Products'
+import ProductsInfo from './components/ProductsInfo'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Route path='/register' element = {<Register/>}/>
       <Route path='/dashboard' element ={<Dashboard />}/>
       <Route path='products' element ={<Products/>} />
+      <Route path='/:id' element={<ProductsInfo/>}/>
     </Routes>
     
     </BrowserRouter>

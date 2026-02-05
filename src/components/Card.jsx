@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Card = ({prod}) => {
     const navigate = useNavigate()
@@ -20,12 +20,12 @@ const Card = ({prod}) => {
           ₹ {prod.price}
         </p>
 
-        <button
-          className="btn btn-primary mt-auto"
-          onClick={() => navigate(`/product/${prod.id}`)}
+        <Link
+          to={`/${prod.id}`}
+          className="btn btn-primary"
         >
           View Details
-        </button>
+        </Link>
       </div>
     </div>
   )
