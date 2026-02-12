@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({setUser}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
@@ -22,6 +22,7 @@ const Login = () => {
     }
 
     if (storedUser.email === email && storedUser.password === password) {
+      setUser(storedUser)
       localStorage.setItem("isAuth", "true")
       alert("Login Successful")
       navigate("/dashboard")
@@ -29,6 +30,8 @@ const Login = () => {
       alert("Invalid Email or Password")
     }
   }
+
+ 
 
 
   return (

@@ -16,6 +16,7 @@ const Products = () => {
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState([])
   const [categoryInput, setcCategoryInput] = useState("all")
+  
 
 
 
@@ -31,6 +32,7 @@ const Products = () => {
     }
   }
   useEffect(() => {
+    
     fetchProducts()
   }, [])
 

@@ -21,7 +21,7 @@ const Card = ({prod}) => {
         </p>
 
         <Link
-          to={`/${prod.id}`}
+          to={`/dashboard/${prod.id}`}
           className="btn btn-primary"
         >
           View Details

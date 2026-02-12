@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Products from './Products'
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
+  // const [loggedUser, setLoggedUser] = useState('')
+  // useEffect(()=>{
+  //   setLoggedUser(user)
+  // },[])
   return (
     <div className="container-fluid p-4 bg-light min-vh-100">
       
@@ -11,6 +15,8 @@ const Dashboard = () => {
         <p className="text-muted mb-0">
           Browse, search and filter products
         </p>
+        {/* <p>{loggedUser && (<span>{loggedUser.name}</span>) }Welcome User: </p> */}
+        <p>Welcome User : {user?.name}</p>
       </div>
 
       {/* Products Section */}
