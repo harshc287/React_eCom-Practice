@@ -21,6 +21,31 @@ export function cartReducer(state, action){
             localStorage.setItem("cartB69", JSON.stringify(updateCart))
             return updateCart;
         }
+
+        case "INCREASE_QTY":{
+            const updateCart = state.map(item => 
+                item.id === action.payload 
+                ? {...item, quantity: item.quantity + 1 }
+                : item
+            )
+
+            localStorage.setItem("cartB69", JSON.stringify(updateCart))
+            return updateCart
+        }
+
+        case "DECREASE_QTY": {
+            const updateCart = state.map(item => 
+                item.id === action.payload
+                ? {...item, quantity: item.quantity - 1}
+                :item
+            )
+            .filter(item => item.quantity > 0)
+
+            localStorage.setItem("cartB69", JSON.stringify(updateCart))
+            return updateCart
+        }
+
+
         case "REMOVE_FROM_CART":
             const updateCart = state.filter(
                 item => item.id !== action.payload

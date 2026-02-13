@@ -10,10 +10,12 @@ import Products from './pages/Products'
 import ProductsInfo from './components/ProductsInfo'
 import { cartReducer, initialCartState } from './reducer/cartReducer'
 import Card from './components/Card'
-import Cart from './components/Cart'
+import Cart from './pages/Cart'
 
 function App() {
-  const [user , setUser] = useState()
+  const [user , setUser] = useState(()=> {
+    return JSON.parse(localStorage.getItem("user")) || null
+  })
   const [cart, dispatch] = useReducer(cartReducer, initialCartState)
 
 
@@ -30,8 +32,10 @@ return (
 
       <Route path='/dashboard/:id' 
         element={<ProductsInfo dispatch= {dispatch}/>}/>
+
       <Route path='/cart' 
         element= {<Cart cart ={cart} dispatch= {dispatch} />} />
+
     </Routes>
     
     </BrowserRouter>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Products from './Products'
+import Header from '../components/Header'
+
 
 const Dashboard = ({user}) => {
   // const [loggedUser, setLoggedUser] = useState('')
@@ -7,6 +9,8 @@ const Dashboard = ({user}) => {
   //   setLoggedUser(user)
   // },[])
   return (
+    <>
+    <Header />
     <div className="container-fluid p-4 bg-light min-vh-100">
       
       {/* Header */}
@@ -18,11 +22,15 @@ const Dashboard = ({user}) => {
         {/* <p>{loggedUser && (<span>{loggedUser.name}</span>) }Welcome User: </p> */}
         <p>Welcome User : {user?.name}</p>
       </div>
+      
+      
+      
 
       {/* Products Section */}
       <Products />
 
     </div>
+    </>
   )
 }
 

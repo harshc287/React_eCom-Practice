@@ -11,15 +11,10 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    // create user object
     const user = { name, email, password };
-
-    // save in localStorage
     localStorage.setItem("user", JSON.stringify(user));
 
     alert("Registration successful");
-
-    // redirect to login
     navigate("/");
   };
 

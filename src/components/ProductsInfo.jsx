@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useReducer, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { cartReducer, initialCartState } from '../reducer/cartReducer'
 
 const ProductsInfo = ({dispatch}) => {
   const { id } = useParams()
@@ -30,12 +29,14 @@ const ProductsInfo = ({dispatch}) => {
 
   function handleAddToCart(){
       console.log("Button Clicked");
+
     const cartProduct ={
       id: product.id, 
       title: product.title,
       price: product.price,
       discountPercentage: product.discountPercentage
     }
+    
     console.log("Dispatching:", cartProduct);
     dispatch({type: "ADD_TO_CART", 
       payload: cartProduct
